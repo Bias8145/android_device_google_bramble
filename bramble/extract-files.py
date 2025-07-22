@@ -51,6 +51,8 @@ blob_fixups: blob_fixups_user_type = {
         .patch_file('osaifu-keitai.patch'),
     'product/etc/sysconfig/nexus.xml': blob_fixup()
         .regex_replace('qulacomm', 'qualcomm'),
+    'system_ext/lib64/libsecureuisvc_jni.so': blob_fixup()
+        .add_needed('libgui_shim.so'),
     'system_ext/priv-app/HbmSVManager/HbmSVManager.apk': blob_fixup()
         .apktool_patch('HbmSVManager.patch'),
     (
@@ -58,6 +60,13 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/android.hardware.keymaster@4.1-impl.nos.so',
     ): blob_fixup()
         .add_needed('libcrypto_shim.so'),
+    (
+        'vendor/bin/hw/citadeld',
+        'vendor/lib/libmedia_ecoservice.so',
+        'vendor/lib64/libmedia_ecoservice.so',
+        'vendor/lib64/libnos_citadeld_proxy.so',
+    ): blob_fixup()
+        .add_needed('libbinder_shim.so'),
     'vendor/lib/libmmcamera_faceproc.so': blob_fixup()
         .clear_symbol_version('__aeabi_memcpy')
         .clear_symbol_version('__aeabi_memset')
