@@ -13,6 +13,8 @@ $(call inherit-product, device/google/redbull/lineage_common.mk)
 
 include device/google/bramble/device-lineage.mk
 
+PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := false
+
 # Device identifier. This must come after all inclusions
 PRODUCT_BRAND := google
 PRODUCT_MODEL := Pixel 4a (5G)
@@ -21,6 +23,17 @@ PRODUCT_NAME := lineage_bramble
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2340
 TARGET_SCREEN_WIDTH := 1080
+TARGET_BOOT_ANIMATION_RES := 1080
+
+WITH_GMS := true
+WITH_GMS_COMMS_SUITE := true
+WITH_PIXEL_LAUNCHER := false
+TARGET_USE_MAPS := false
+TARGET_USE_FILES := true
+TARGET_USE_GPHOTOS := true
+TARGET_USE_WALLPAPERS := false
+USE_REALITY_ENGINE := true
+PRODUCT_NO_CAMERA := true
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildDesc="bramble-user 14 UP1A.231105.001.B2 11260668 release-keys" \
